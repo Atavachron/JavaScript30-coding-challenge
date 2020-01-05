@@ -1,3 +1,4 @@
+const hands = document.querySelectorAll(".hand");
 const secondsHand = document.querySelector(".seconds-hand");
 const minutesHand = document.querySelector(".minutes-hand");
 const hoursHand = document.querySelector(".hours-hand");
@@ -15,6 +16,12 @@ function setDate() {
   secondsHand.style.transform = `rotate(${secondsDegrees}deg)`;
   minutesHand.style.transform = `rotate(${minutesDegrees}deg)`;
   hoursHand.style.transform = `rotate(${hoursDegrees}deg)`;
+
+  if (secondsDegrees === 90) {
+    hands.forEach(hand => (hand.style.transition = "none"));
+  } else {
+    hands.forEach(hand => (hand.style.transition = ""));
+  }
 }
 
 setInterval(setDate, 1000);
